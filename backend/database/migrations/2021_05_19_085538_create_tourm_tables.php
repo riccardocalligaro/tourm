@@ -49,16 +49,6 @@ class CreateTourmTables extends Migration
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
         });
 
-//        Schema::create('room_audioguides', function (Blueprint $table) {
-//            $table->increments('id');
-//            $table->unsignedInteger('room_id')->index();
-//            $table->unsignedInteger('audioguide_id')->index();
-//            $table->timestamps();
-//
-//            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-//            $table->foreign('audioguide_id')->references('id')->on('audioguides')->onDelete('cascade');
-//        });
-
         // employees
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
@@ -105,7 +95,6 @@ class CreateTourmTables extends Migration
             $table->increments('id');
             $table->boolean('paid');
             $table->boolean('active');
-            $table->string('email');
             $table->unsignedInteger('ticket_type_id');
 
             $table->timestamps();
@@ -124,9 +113,10 @@ class CreateTourmTables extends Migration
         Schema::dropIfExists('room_audioguides');
         Schema::dropIfExists('room_articles');
         Schema::dropIfExists('articles');
+        Schema::dropIfExists('audioguides');
+
         Schema::dropIfExists('rooms');
         Schema::dropIfExists('beacons');
-        Schema::dropIfExists('audioguides');
         Schema::dropIfExists('tickets');
         Schema::dropIfExists('ticket_types');
         Schema::dropIfExists('languages');

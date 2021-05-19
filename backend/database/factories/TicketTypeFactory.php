@@ -3,23 +3,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Audioguide;
 
-use App\Models\Language;
-use App\Models\Room;
+use App\Models\TicketType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
-class AudioguideFactory extends Factory
+class TicketTypeFactory extends Factory
 {
-
-
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Audioguide::class;
+    protected $model = TicketType::class;
 
     /**
      * Define the model's default state.
@@ -30,9 +25,8 @@ class AudioguideFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-            'language_id' => Language::inRandomOrder()->first()->id,
-            'room_id' => Room::inRandomOrder()->first()->id,
-            'path' => asset('audioguides/sample.mp3')
+            'price' => $this->faker->numberBetween(0, 100),
+            'duration' => $this->faker->numberBetween(0, 120)
         ];
     }
 }

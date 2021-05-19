@@ -3,18 +3,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Beacon;
-use App\Models\Room;
+
+
+use App\Models\Ticket;
+use App\Models\TicketType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RoomFactory extends Factory
+class TicketFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Room::class;
+    protected $model = Ticket::class;
 
     /**
      * Define the model's default state.
@@ -24,10 +26,9 @@ class RoomFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word,
-            'n_visitors' => $this->faker->numberBetween(0, 30),
-            'open_to_public' => $this->faker->boolean(),
-            'beacon_id' => Beacon::inRandomOrder()->first()->uuid,
+            'paid' => $this->faker->boolean,
+            'active' => $this->faker->boolean,
+            'ticket_type_id' => TicketType::inRandomOrder()->first()->id,
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth()
         ];

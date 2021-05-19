@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Beacon;
+use App\Models\Ticket\Beacon;
 
 class BeaconsController extends Controller
 {

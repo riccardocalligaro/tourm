@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Room;
+use App\Models\Ticket\Room;
 
 class RoomsController extends Controller
 {

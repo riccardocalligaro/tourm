@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Language;
+use App\Models\Ticket\Language;
 
 class LanguagesController extends Controller
 {
