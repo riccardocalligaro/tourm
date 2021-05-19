@@ -1,0 +1,15 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is '__latexindent_temp.blg'
+[79] biber-darwin:340> INFO - === Tue May 18, 2021, 13:11:51
+[94] Biber.pm:415> INFO - Reading '__latexindent_temp.bcf'
+[186] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
+[198] Biber.pm:4340> INFO - Processing section 0
+[207] Biber.pm:4531> INFO - Looking for bibtex format file 'references.bib' for section 0
+[208] bibtex.pm:1689> INFO - LaTeX decoding ...
+[212] bibtex.pm:1494> INFO - Found BibTeX data source 'references.bib'
+[233] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[233] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[234] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'it-IT'
+[234] Biber.pm:4174> INFO - No sort tailoring available for locale 'it-IT'
+[241] bbl.pm:654> INFO - Writing '__latexindent_temp.bbl' with encoding 'UTF-8'
+[243] bbl.pm:757> INFO - Output to __latexindent_temp.bbl

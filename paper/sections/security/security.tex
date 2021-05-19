@@ -1,0 +1,17 @@
+
+\section{Sicurezza}
+L'infrastruttura di rete, i servizi e i dati contenuti nei dispositivi collegati in rete sono risorse personali e aziendali fondamentali. Nessuna soluzione singola può proteggere la rete dalla varietà di minacce esistenti. Per questo motivo, la sicurezza deve essere implementata su \textbf{più livelli}, utilizzando più di una soluzione. Se un componente di sicurezza non riesce a identificare e proteggere la rete, possono farlo altri.
+% Se si pensa alla struttura di una rete nel modello \textbf{ISO-OSI}, è possibile osservare che le minacce alla sicurezza informatica possono avvenire in qualsiasi livello. Muovendosi verso l'esterno dall'utente, i dati vengono inseriti nella rete attraverso il software che gira sul livello applicazione. Attraverso i livelli sessione, trasporto, rete e collegamento e arrivando all'altra estremità, il livello fisico, i dati risalgono i sette livelli per arrivare alla destinazione prevista. Ogni livello ha i suoi protocolli e altri standard di comunicazione che regolano il suo uso efficiente. Se la sicurezza non è incorporata in modo efficiente ed efficace in ogni livello del modello ISO-OSI, ogni passo del percorso che i dati compiono dall'origine alla destinazione, è vulnerabile e inefficace. È sicuro solo quanto il suo anello più debole. 
+
+% \begin{itemize}
+%     \item \textbf{Livello applicazione:} esempi di attacchi a livello di applicazione includono attacchi DDoS (distributed denial-of-service), flood, SQL injection, cross-site scripting (XSS) e cross-site request forgery (CSRF). Per contrastare queste e altre minacce è necessario implementare varie protezioni a livello applicazione come web application firewall (WAF), servizi di gateway web sicuri e altro. Il livello delle applicazioni è il più difficile da difendere. Le vulnerabilità incontrate qui spesso si basano su scenari complessi di input dell'utente che sono difficili da definire con una firma di rilevamento delle intrusioni. Questo livello è anche il più accessibile e il più esposto al mondo esterno. Per funzionare, l'applicazione deve essere accessibile sulla porta 80 (HTTP) o sulla porta 443 (HTTPS).
+%     Per contrastrare gli attacchi a questo livello ho implementato le seguenti funzionalità:
+%     \begin{itemize}
+%         \item Virtualizzazione con Docker
+%         \item HTTPS
+%     \end{itemize}
+%     \item \textbf{Presentazione}: questo livello logico o host utilizza una serie di metodi di conversione per standardizzare i dati da e verso vari formati locali, mentre le informazioni vengono trasferite dal livello applicazione alla rete. L'input dagli utenti (che dovrebbe essere stato ripulito prima di passare alle funzioni) dovrebbe essere segregato dalle funzioni di controllo del programma, per evitare input dannosi che potrebbero portare a crash di sistema o exploit.
+% \end{itemize}
+
+\subsection{Docker}
+% parlare di docker 
