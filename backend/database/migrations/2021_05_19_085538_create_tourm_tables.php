@@ -39,45 +39,22 @@ class CreateTourmTables extends Migration
         Schema::create('audioguides', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('language_id');
+            $table->unsignedInteger('language_id');
             $table->string('path');
+
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
         });
 
         Schema::create('room_audioguides', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('room_id')->index();
-            $table->integer('audioguide_id')->index();
+            $table->unsignedInteger('room_id')->index();
+            $table->unsignedInteger('audioguide_id')->index();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('audioguide_id')->references('id')->on('audioguides')->onDelete('cascade');
         });
-
-
-        Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('language_id');
-            $table->string('title');
-            $table->longText('body');
-            $table->integer('employee_id');
-
-
-            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-        });
-
-        Schema::create('room_articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('room_id')->index();
-            $table->integer('article_id')->index();
-            $table->timestamps();
-
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-        });
-
 
         // employees
         Schema::create('employees', function (Blueprint $table) {
@@ -88,19 +65,29 @@ class CreateTourmTables extends Migration
             $table->timestamps();
         });
 
-        // ticket
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('paid');
-            $table->boolean('active');
-            $table->string('email');
-            $table->integer('ticket_type_id');
+            $table->unsignedInteger('language_id');
+            $table->string('title');
+            $table->longText('body');
+            $table->unsignedInteger('employee_id');
 
-            $table->timestamps();
 
-            $table->foreign('ticket_type_id')->references('id')->on('ticket_types')->onDelete('cascade');
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
 
+        Schema::create('room_articles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('room_id')->index();
+            $table->unsignedInteger('article_id')->index();
+            $table->timestamps();
+
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+        });
+
+        // ticket types
         Schema::create('ticket_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -108,6 +95,19 @@ class CreateTourmTables extends Migration
             $table->integer('duration');
 
             $table->timestamps();
+        });
+
+        // ticket
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->boolean('paid');
+            $table->boolean('active');
+            $table->string('email');
+            $table->unsignedInteger('ticket_type_id');
+
+            $table->timestamps();
+
+            $table->foreign('ticket_type_id')->references('id')->on('ticket_types')->onDelete('cascade');
         });
     }
 
