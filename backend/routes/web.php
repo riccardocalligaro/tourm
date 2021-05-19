@@ -20,4 +20,8 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('/beacons', 'BeaconsController@index');
     $router->get('/rooms', 'RoomsController@index');
+    $router->get('/room/{id}/audioguides', 'AudioguidesController@audioguidesByRoom');
+
+    $router->get('/languages', 'LanguagesController@index');
+    $router->get('/audioguides', 'AudioguidesController@index');
 });

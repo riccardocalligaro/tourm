@@ -40,21 +40,24 @@ class CreateTourmTables extends Migration
             $table->increments('id');
             $table->string('title');
             $table->unsignedInteger('language_id');
+            $table->unsignedInteger('room_id');
+
             $table->string('path');
 
 
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
         });
 
-        Schema::create('room_audioguides', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('room_id')->index();
-            $table->unsignedInteger('audioguide_id')->index();
-            $table->timestamps();
-
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('audioguide_id')->references('id')->on('audioguides')->onDelete('cascade');
-        });
+//        Schema::create('room_audioguides', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->unsignedInteger('room_id')->index();
+//            $table->unsignedInteger('audioguide_id')->index();
+//            $table->timestamps();
+//
+//            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+//            $table->foreign('audioguide_id')->references('id')->on('audioguides')->onDelete('cascade');
+//        });
 
         // employees
         Schema::create('employees', function (Blueprint $table) {

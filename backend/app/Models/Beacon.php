@@ -10,6 +10,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Laravel\Lumen\Auth\Authorizable;
 
+/**
+ * App\Models\Beacon
+ *
+ * @property string $uuid
+ * @property string $name
+ * @method static \Database\Factories\BeaconFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Beacon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Beacon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Beacon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Beacon whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Beacon whereUuid($value)
+ * @mixin \Eloquent
+ */
 class Beacon extends Model
 {
 
@@ -31,5 +44,4 @@ class Beacon extends Model
      * @var array
      */
     protected $hidden = [];
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
@@ -39,6 +39,7 @@ $app->withEloquent();
 | your own bindings here if you like or you can make another file.
 |
 */
+
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
@@ -94,6 +95,9 @@ $app->configure('app');
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -111,7 +115,7 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    require __DIR__ . '/../routes/web.php';
 });
 
 return $app;

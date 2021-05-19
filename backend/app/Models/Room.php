@@ -28,7 +28,7 @@ class Room extends Model
      *
      * @var array
      */
-    protected $hidden = ['id'];
+    protected $hidden = [];
 
     protected $casts = [
         'open_to_public' => 'boolean'
