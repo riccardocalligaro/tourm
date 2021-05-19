@@ -118,12 +118,15 @@ class CreateTourmTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beacons');
-        Schema::dropIfExists('rooms');
-        Schema::dropIfExists('audioguides');
         Schema::dropIfExists('room_audioguides');
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('room_articles');
+        Schema::dropIfExists('articles');
+        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('beacons');
+        Schema::dropIfExists('audioguides');
         Schema::dropIfExists('tickets');
         Schema::dropIfExists('ticket_types');
+        Schema::dropIfExists('languages');
+        Schema::dropIfExists('employees');
     }
 }

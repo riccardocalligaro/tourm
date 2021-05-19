@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Beacon;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class BeaconsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(BeaconsTableSeeder::class);
-        $this->call(RoomsTableSeeder::class);
+        Beacon::factory()
+            ->count(20)
+            ->create();
     }
 }
