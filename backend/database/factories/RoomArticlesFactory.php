@@ -3,21 +3,21 @@
 
 namespace Database\Factories;
 
-use App\Models\Audioguide;
+
+use App\Models\Article;
 use App\Models\Room;
+use App\Models\RoomArticles;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
-class AudioguideFactory extends Factory
+class RoomArticlesFactory extends Factory
 {
-
-
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Audioguide::class;
+    protected $model = RoomArticles::class;
+
 
     /**
      * Define the model's default state.
@@ -27,9 +27,10 @@ class AudioguideFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word,
             'room_id' => Room::inRandomOrder()->first()->id,
-            'path' => asset('audioguides/sample.mp3')
+            'article_id' => Article::inRandomOrder()->first()->id,
+            'created_at' => $this->faker->dateTimeThisMonth(),
+            'updated_at' => $this->faker->dateTimeThisMonth()
         ];
     }
 }

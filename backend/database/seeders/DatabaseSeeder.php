@@ -15,10 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(BeaconsTableSeeder::class);
         $this->call(RoomsTableSeeder::class);
-        $this->call(LanguagesTableSeeder::class);
         $this->call(AudioguideTableSeeder::class);
         // Tickets
         $this->call(TicketsTableSeeder::class);
+
+        $this->call(EmployeesTableSeeder::class);
+        $this->call(ArticlesTableSeeder::class);
+
 
     }
 }
