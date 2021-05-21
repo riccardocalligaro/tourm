@@ -24,6 +24,7 @@ class TicketTypeFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid'
             'title' => $this->faker->word,
             'price' => $this->faker->numberBetween(0, 100),
             'duration' => $this->faker->numberBetween(0, 120)

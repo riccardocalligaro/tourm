@@ -29,8 +29,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     // tickets
     $router->get('/tickets', 'TicketsController@tickets');
-    $router->get('/ticket-types', 'TicketsController@ticket_types');
-    // $router->get('/check-ticket/{code}', 'TicketsController@checkTicket');
+    $router->get('/ticket-types', 'TicketsController@ticketTypes');
+    $router->get('/check-ticket/{code}', 'TicketsController@checkTicket');
 
     // employees
     $router->get('/employees', 'EmployeesController@index');

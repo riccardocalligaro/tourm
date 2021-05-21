@@ -82,7 +82,7 @@ class CreateTourmTables extends Migration
 
         // ticket
         Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('uuid')->primary();
             $table->boolean('paid');
             $table->boolean('active');
             $table->unsignedInteger('ticket_type_id');

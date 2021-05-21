@@ -13,9 +13,14 @@ class TicketsController extends Controller
         return response()->json(Ticket::all());
     }
 
-    public function ticket_types()
+    public function ticketTypes()
     {
         return response()->json(TicketType::all());
+    }
+
+    public function checkTicket($code)
+    {
+        return response()->json(TicketType::where());
     }
 
 }
