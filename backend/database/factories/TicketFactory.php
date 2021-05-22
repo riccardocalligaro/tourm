@@ -4,10 +4,10 @@
 namespace Database\Factories;
 
 
-
 use App\Models\Ticket;
 use App\Models\TicketType;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TicketFactory extends Factory
 {
@@ -26,6 +26,7 @@ class TicketFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => Str::uuid(),
             'paid' => $this->faker->boolean,
             'active' => $this->faker->boolean,
             'ticket_type_id' => TicketType::inRandomOrder()->first()->id,

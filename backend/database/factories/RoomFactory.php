@@ -29,7 +29,9 @@ class RoomFactory extends Factory
             'open_to_public' => $this->faker->boolean(),
             'beacon_id' => Beacon::inRandomOrder()->first()->uuid,
             'created_at' => $this->faker->dateTimeThisMonth(),
-            'updated_at' => $this->faker->dateTimeThisMonth()
+            'updated_at' => $this->faker->dateTimeThisMonth(),
+            'image_url' => asset('images/villa_immagine.jpeg')
+
         ];
     }
 }

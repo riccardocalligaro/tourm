@@ -20,7 +20,8 @@ class TicketsController extends Controller
 
     public function checkTicket($code)
     {
-        return response()->json(TicketType::where());
+        $ticket_valid = Ticket::where(['paid' => true, 'uuid' => $code, 'active' => true])->get()->count() == 1;
+        return response()->json(array('valid' => $ticket_valid));
     }
 
 }

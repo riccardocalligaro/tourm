@@ -20,6 +20,7 @@ class CreateTourmTables extends Migration
 
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('image_url');
             $table->string('title');
             $table->integer('n_visitors');
             $table->boolean('open_to_public');

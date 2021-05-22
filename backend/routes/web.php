@@ -26,6 +26,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     $router->get('/languages', 'LanguagesController@index');
     $router->get('/audioguides', 'AudioguidesController@index');
+    $router->get('/audioguides/{beacon_code}', 'AudioguidesController@audioguidesByBeacon');
 
     // tickets
     $router->get('/tickets', 'TicketsController@tickets');
