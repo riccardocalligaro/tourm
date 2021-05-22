@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tourm_app/core/data/local/tm_dio_client.dart';
+import 'package:tourm_app/core/data/remote/tm_dio_client.dart';
 import 'infrastructure/network_info.dart';
 
 final pm = GetIt.instance;

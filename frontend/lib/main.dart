@@ -7,7 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tourm_app/core/presentation/customization/tm_colors.dart';
 
 import 'core/core_container.dart';
-import 'core/data/local/tm_dio_client.dart';
+import 'core/data/remote/tm_dio_client.dart';
 import 'core/infrastructure/localization/app_localizations.dart';
 import 'core/infrastructure/localization/bloc/language_bloc.dart';
 import 'core/infrastructure/log/bloc_logger.dart';

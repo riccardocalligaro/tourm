@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourm_app/core/data/local/tm_api_config.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 
 import '../../infrastructure/log/logger.dart';
 
