@@ -2,13 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Testing\Fluent\Concerns\Has;
-use Laravel\Lumen\Auth\Authorizable;
 
 class Room extends Model
 {
@@ -31,6 +26,7 @@ class Room extends Model
     protected $hidden = [];
 
     protected $casts = [
-        'open_to_public' => 'boolean'
+        'open_to_public' => 'boolean',
+        'highlighted' => 'boolean'
     ];
 }

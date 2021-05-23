@@ -12,6 +12,10 @@ class Article extends Model
     use HasFactory;
 
     protected $table = 'articles';
+
+    protected $casts = [
+        'highlighted' => 'boolean'
+    ];
 }
 
 class RoomArticles extends Model
@@ -19,4 +23,5 @@ class RoomArticles extends Model
     use HasFactory;
 
     protected $table = 'room_articles';
+
 }

@@ -30,8 +30,8 @@ class RoomFactory extends Factory
             'beacon_id' => Beacon::inRandomOrder()->first()->uuid,
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth(),
-            'image_url' => asset('images/villa_immagine.jpeg')
-
+            'image_url' => asset('images/villa_immagine.jpeg'),
+            'highlighted' => $this->faker->boolean(20)
         ];
     }
 }

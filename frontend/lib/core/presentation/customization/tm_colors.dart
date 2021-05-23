@@ -5,26 +5,16 @@ import 'package:flutter/material.dart';
 /// Class that contains all the main appc olors
 class TMColors {
   TMColors._();
-
-  static Color get primary => const Color(0xff5EA034);
-  static Color get extraLightText => const Color(0xffD8D8D8);
-  static Color get lightText => const Color(0xffACACAC);
-  static Color get facebookColor => const Color(0xff3A569B);
+  static Color get primary => const Color(0xff014343);
   static Color get errorColor => const Color(0xffE8431F);
-  static Color get bgColor => const Color(0xfff5f8fa);
+  static Color get backgroundColor => const Color(0xffEDEEEE);
+  static Color get alternativeBackgroundColor => const Color(0xffE5F4F4);
 
-  static Color get greyBlue => const Color(0xffF5F4F8);
-  static Color get lightPurple => const Color(0xff97AFF3);
-  static Color get darkYellow => const Color(0xffFEC106);
-  static Color get softGreyText => Colors.grey[700];
-  static Color get lightOrange => const Color(0xffF28E1A);
-  static Color get darkGrey => const Color(0xff484A54);
+  static Color get ocra => const Color(0xffE5DCA5);
+  static Color get black => const Color(0xff282928);
+  static Color get pink => const Color(0xffE7CDC6);
 
-  static Color get blue => Colors.blue;
-  static Color get orange => Colors.orange;
-  static Color get red => Colors.red;
-  static Color get purple => Colors.purpleAccent;
-  static Color get blueGrey => Colors.blueGrey;
+  static Color get lightGrey => const Color(0xffbec2c2);
 
   static Color getColor(int index) {
     final colors = [

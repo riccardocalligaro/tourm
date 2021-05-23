@@ -24,6 +24,8 @@ class CreateTourmTables extends Migration
             $table->string('title');
             $table->integer('n_visitors');
             $table->boolean('open_to_public');
+            $table->boolean('highlighted');
+
             $table->string('beacon_id');
             $table->timestamps();
 
@@ -53,10 +55,11 @@ class CreateTourmTables extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('subtitle');
+            $table->string('image_url');
             $table->longText('body');
+            $table->boolean('highlighted');
             $table->unsignedInteger('employee_id');
-
-
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
         });

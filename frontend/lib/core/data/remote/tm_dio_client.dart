@@ -19,7 +19,7 @@ class TMDioClient {
     @required this.sharedPreferences,
   });
 
-  static Dio createDio() {
+  Dio createDio() {
     final options = BaseOptions(
       baseUrl: TMApiConfig.apiUrl,
       contentType: ContentType.json.value,

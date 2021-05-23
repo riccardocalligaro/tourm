@@ -26,7 +26,10 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
+            'subtitle' => $this->faker->realTextBetween(5, 25),
+            'image_url' => asset('images/villa_immagine.jpeg'),
             'body' => $this->faker->text,
+            'highlighted' => $this->faker->boolean(20),
             'employee_id' => Employee::inRandomOrder()->first()->id,
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth()

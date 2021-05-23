@@ -4,11 +4,11 @@ import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
 import 'package:tourm_app/core/infrastructure/localization/app_localizations.dart';
 import 'package:tourm_app/core/infrastructure/report/report_manager.dart';
 
-class SRFailureView extends StatelessWidget {
+class PMFailureView extends StatelessWidget {
   final Failure failure;
   final Function refresh;
 
-  const SRFailureView({
+  const PMFailureView({
     Key key,
     @required this.failure,
     this.refresh,
@@ -41,7 +41,7 @@ class SRFailureView extends StatelessWidget {
             ),
           TextButton(
             child: Text(
-              AppLocalizations.of(context).translate('show_error'),
+              'Mostra errore',
               style: TextStyle(
                 color: Colors.grey[600],
               ),
@@ -58,8 +58,7 @@ class SRFailureView extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child:
-                            Text(AppLocalizations.of(context).translate('ok')),
+                        child: Text('OK'),
                       ),
                       TextButton(
                         onPressed: () async {

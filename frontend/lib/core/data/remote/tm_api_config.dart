@@ -1,7 +1,7 @@
 mixin TMApiConfig {
-  static String apiUrl = '${_getProductionBaseURL()}/api/';
+  static String apiUrl = '${_getBaseUrl()}/api/v1';
 }
 
-String _getProductionBaseURL() {
-  return 'https://www.refertionline.it';
+String _getBaseUrl() {
+  return 'http://localhost:8000';
 }

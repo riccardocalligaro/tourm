@@ -1,50 +1,48 @@
-class ArticleRemoteModel {
+class RoomRemoteModel {
   int id;
-  String title;
-  String subtitle;
   String imageUrl;
-  String body;
-  int employeeId;
+  String title;
+  int nVisitors;
+  bool openToPublic;
+  String beaconId;
   String createdAt;
   String updatedAt;
   bool highlighted;
 
-  ArticleRemoteModel({
+  RoomRemoteModel({
     this.id,
+    this.imageUrl,
     this.title,
-    this.body,
-    this.employeeId,
+    this.nVisitors,
+    this.openToPublic,
+    this.beaconId,
     this.createdAt,
     this.updatedAt,
     this.highlighted,
-    this.subtitle,
-    this.imageUrl,
   });
 
-  ArticleRemoteModel.fromJson(Map<String, dynamic> json) {
+  RoomRemoteModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    imageUrl = json['image_url'];
     title = json['title'];
-    body = json['body'];
-    employeeId = json['employee_id'];
+    nVisitors = json['n_visitors'];
+    openToPublic = json['open_to_public'];
+    beaconId = json['beacon_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     highlighted = json['highlighted'];
-    subtitle = json['subtitle'];
-    imageUrl = json['image_url'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['image_url'] = imageUrl;
     data['title'] = title;
-    data['body'] = body;
-    data['employee_id'] = employeeId;
+    data['n_visitors'] = nVisitors;
+    data['open_to_public'] = openToPublic;
+    data['beacon_id'] = beaconId;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
-    data['highlighted'] = highlighted;
-    data['subtitle'] = subtitle;
-    data['image_url'] = imageUrl;
-
     return data;
   }
 }
