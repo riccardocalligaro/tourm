@@ -7,7 +7,7 @@ import 'package:tourm_app/presentation/beacon/beacons_scan_page.dart';
 import 'package:tourm_app/presentation/room/rooms_page.dart';
 import 'package:tourm_app/presentation/settings/settings_page.dart';
 
-import 'audioguides/audioguide_page.dart';
+import 'audioguides/audioguides_page.dart';
 
 class TMNavigator extends StatefulWidget {
   const TMNavigator({Key key}) : super(key: key);
@@ -20,6 +20,12 @@ class _TMNavigatorState extends State<TMNavigator> {
   int _currentIndex = 0;
   final GlobalKey _fabButtonKey = GlobalKey();
   RipplePageTransition _ripplePageTransition;
+  List<Widget> children = [
+    ArticlesPage(),
+    RoomsPage(),
+    AudioguidesPage(),
+    SettingsPage()
+  ];
 
   @override
   void initState() {
@@ -27,11 +33,16 @@ class _TMNavigatorState extends State<TMNavigator> {
       _fabButtonKey,
       color: TMColors.primary,
     );
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // return Scaffold(
+    //   bottomNavigationBar: buildBottomNavigationBar(),
+    //   body: IndexedStack(index: _currentIndex, children: children),
+    // );
     return Stack(
       children: [
         Scaffold(
@@ -51,12 +62,7 @@ class _TMNavigatorState extends State<TMNavigator> {
           bottomNavigationBar: _buildBottomAppBar(),
           body: IndexedStack(
             index: _currentIndex,
-            children: [
-              ArticlesPage(),
-              RoomsPage(),
-              AudioguidesPage(),
-              SettingsPage()
-            ],
+            children: children,
           ),
         ),
         _ripplePageTransition,

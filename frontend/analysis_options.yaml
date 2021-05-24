@@ -13,3 +13,4 @@ linter:
     avoid_catches_without_on_clauses: false
     avoid_types_on_closure_parameters: false
     avoid_returning_this: false
+    type_annotate_public_apis: false

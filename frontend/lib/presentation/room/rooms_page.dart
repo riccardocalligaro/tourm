@@ -2,8 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
 import 'package:tourm_app/core/presentation/customization/no_glow.dart';
+import 'package:tourm_app/core/presentation/customization/tm_colors.dart';
+import 'package:tourm_app/core/presentation/customization/tm_image.dart';
 import 'package:tourm_app/core/presentation/states/pm_failure_view.dart';
 import 'package:tourm_app/core/presentation/states/pm_loading_view.dart';
+import 'package:tourm_app/core/presentation/states/tm_empty_view.dart';
 import 'package:tourm_app/core_container.dart';
 import 'package:tourm_app/data/model/remote/room_remote_model.dart';
 import 'package:tourm_app/domain/repository/rooms_repository.dart';
@@ -14,47 +17,80 @@ class RoomsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final RoomsRepository roomsRepository = sl();
+
     return Scaffold(
-      body: FutureBuilder<Either<Failure, List<RoomRemoteModel>>>(
-        future: roomsRepository.getRooms(),
-        initialData: Right([]),
-        builder: (BuildContext context,
-            AsyncSnapshot<Either<Failure, List<RoomRemoteModel>>> snapshot) {
-          if (snapshot.hasData) {
-            return snapshot.data.fold(
-              (f) => PMFailureView(failure: f),
-              (rooms) {
-                return ListView(
-                  padding: const EdgeInsets.all(16),
-                  children: [
-                    RoomItem(
-                      room: rooms[0],
-                    ),
-                    RoomItem(
-                      room: rooms[1],
-                    ),
-                    SizedBox(
-                      height: 200,
-                      child: HighlightedRooms(rooms: rooms),
-                    ),
-                    ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: rooms.length,
-                      itemBuilder: (context, index) {
-                        return RoomItem(
-                          room: rooms[index],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                child: Text(
+                  'Rooms',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: TMColors.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              FutureBuilder<Either<Failure, List<RoomRemoteModel>>>(
+                future: roomsRepository.getRooms(),
+                initialData: Right([]),
+                builder: (BuildContext context,
+                    AsyncSnapshot<Either<Failure, List<RoomRemoteModel>>>
+                        snapshot) {
+                  if (snapshot.hasData) {
+                    return snapshot.data.fold(
+                      (f) => PMFailureView(failure: f),
+                      (rooms) {
+                        if (rooms.isEmpty) {
+                          return TMEmptyView();
+                        }
+                        return ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                              child: RoomItem(
+                                room: rooms[0],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                              child: RoomItem(
+                                room: rooms[1],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 160,
+                              child: HighlightedRooms(rooms: rooms),
+                            ),
+                            ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                              shrinkWrap: true,
+                              itemCount: rooms.length,
+                              itemBuilder: (context, index) {
+                                return RoomItem(
+                                  room: rooms[index],
+                                );
+                              },
+                            )
+                          ],
                         );
                       },
-                    )
-                  ],
-                );
-              },
-            );
-          } else {
-            return TMLoadingView();
-          }
-        },
+                    );
+                  } else {
+                    return TMLoadingView();
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -66,9 +102,78 @@ class RoomItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: Text(room.title),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 1), // changes position of shadow
+            ),
+          ],
+        ),
+        margin: EdgeInsets.zero,
+        child: Material(
+          borderRadius: BorderRadius.circular(8.0),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(8.0),
+            onTap: () {},
+            child: Ink(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 4,
+                      height: 80,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: TMImage(
+                          room.imageUrl,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            room.title,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text('${room.nVisitors} visitatori'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -119,6 +224,7 @@ class HighlightedRooms extends StatelessWidget {
           ),
           itemCount: pages,
           itemBuilder: (context, pageIndex) {
+            // return Text('s');
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -137,10 +243,12 @@ class HighlightedRooms extends StatelessWidget {
                 ),
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.all(16),
                   shrinkWrap: true,
                   itemCount: roomsList[pageIndex].length,
                   itemBuilder: (context, index) {
                     final item = roomsList[pageIndex][index];
+                    //return Text(item.title);
                     return ListTile(
                       title: Text(item.title),
                       // subtitle: Text(

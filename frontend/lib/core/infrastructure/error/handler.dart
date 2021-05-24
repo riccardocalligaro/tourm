@@ -2,16 +2,19 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-
 import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
-import 'package:tourm_app/core/infrastructure/log/logger.dart';
 
 Failure handleError(
-  Exception e, [
+  dynamic e, [
   StackTrace s,
 ]) {
   // log the errror
-  Logger.error(e, s);
+  print(e);
+
+  if (e is Exception) {
+  } else {
+    e = Exception(e.toString());
+  }
 
   if (e is DioError) {
     if (e is TimeoutException || e is SocketException || e.response == null) {

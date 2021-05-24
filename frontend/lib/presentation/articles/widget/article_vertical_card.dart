@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tourm_app/core/presentation/customization/tm_image.dart';
 import 'package:tourm_app/data/model/remote/article_remote_model.dart';
 
+import '../article_page.dart';
+
 class ArticleVerticalCard extends StatefulWidget {
   final ArticleRemoteModel article;
   final bool fromHome;
@@ -58,32 +60,11 @@ class _ArticleVerticalCardState extends State<ArticleVerticalCard> {
                       height: 80,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: widget.disableHero
-                            ? TMImage(
-                                widget.article.imageUrl,
-                              )
-                            : Hero(
-                                tag: widget.fromHome
-                                    ? 'article${widget.article.id}'
-                                    : 'article-list${widget.article.id}',
-                                child: TMImage(
-                                  widget.article.imageUrl,
-                                ),
-                              ),
+                        child: TMImage(
+                          widget.article.imageUrl,
+                        ),
                       ),
                     ),
-                    // Expanded(
-                    //   flex: 2,
-                    //   child: ClipRRect(
-                    //     borderRadius: BorderRadius.circular(8.0),
-                    //     child: Hero(
-                    //       tag: 'article${widget.article.id}',
-                    //       child: MzImage(
-                    //         widget.article.poster,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                     SizedBox(
                       width: 16,
                     ),
@@ -121,13 +102,12 @@ class _ArticleVerticalCardState extends State<ArticleVerticalCard> {
   }
 
   void goToArticlePage(ArticleRemoteModel articleDomainModel) {
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(
-    //     builder: (context) => ArticlePage(
-    //       article: articleDomainModel,
-    //       fromHome: widget.fromHome,
-    //     ),
-    //   ),
-    // );
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ArticlePage(
+          article: articleDomainModel,
+        ),
+      ),
+    );
   }
 }

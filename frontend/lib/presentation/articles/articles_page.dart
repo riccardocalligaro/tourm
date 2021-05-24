@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart' hide State;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
+import 'package:tourm_app/core/presentation/animated_qr_dialog.dart';
 import 'package:tourm_app/core/presentation/customization/no_glow.dart';
 import 'package:tourm_app/core/presentation/customization/tm_colors.dart';
 import 'package:tourm_app/core/presentation/customization/tm_image.dart';
@@ -11,6 +12,8 @@ import 'package:tourm_app/core_container.dart';
 import 'package:tourm_app/data/model/remote/article_remote_model.dart';
 import 'package:tourm_app/domain/repository/articles_repository.dart';
 import 'package:tourm_app/presentation/articles/widget/article_vertical_card.dart';
+
+import 'article_page.dart';
 
 class ArticlesPage extends StatefulWidget {
   ArticlesPage({Key key}) : super(key: key);
@@ -217,11 +220,10 @@ class _ArticlesLoadedStateState extends State<ArticlesLoadedState> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(8.0),
                     onTap: () {
-                      // TODO: dialog
-                      // showDialog(
-                      //   context: context,
-                      //   builder: (_) => AnimatedQRDialog(),
-                      // );
+                      showDialog(
+                        context: context,
+                        builder: (_) => AnimatedQRDialog(),
+                      );
                     },
                     child: Hero(
                       tag: 'qrcode',
@@ -414,10 +416,7 @@ class _ArticlesLoadedStateState extends State<ArticlesLoadedState> {
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Hero(
-                          tag: 'article${article.id}',
-                          child: TMImage(article.imageUrl),
-                        ),
+                        child: TMImage(article.imageUrl),
                       ),
                     ),
                     SizedBox(height: 16),
@@ -443,12 +442,12 @@ class _ArticlesLoadedStateState extends State<ArticlesLoadedState> {
   }
 
   void goToArticlePage(ArticleRemoteModel articleDomainModel) {
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(
-    //     builder: (context) => ArticlePage(
-    //       article: articleDomainModel,
-    //     ),
-    //   ),
-    // );
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ArticlePage(
+          article: articleDomainModel,
+        ),
+      ),
+    );
   }
 }

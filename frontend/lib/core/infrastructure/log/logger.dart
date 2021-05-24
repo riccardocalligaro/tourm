@@ -82,12 +82,7 @@ class Logger {
     String methodName,
   }) {
     FLog.error(
-      className:
-          className ?? Trace.from(trace).frames[1].uri.toString() ?? 'Unknown',
-      methodName: methodName ??
-          Trace.from(trace).frames[1].member.toString() ??
-          'Unknown',
-      text: text,
+      text: text ?? '',
       exception: Exception(error.toString()),
       stacktrace: StackTrace.fromString(Trace.from(trace).toString()),
       dataLogType: type.toString(),
