@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Ticket\Audioguide;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +10,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        return response()->json(Article::all());
+        return response()->json(DB::select('select * from articles inner join employees e on articles.employee_id = e.id'));
     }
 
 

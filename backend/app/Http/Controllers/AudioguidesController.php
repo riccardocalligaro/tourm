@@ -14,9 +14,14 @@ class AudioguidesController extends Controller
         return response()->json(Audioguide::all());
     }
 
+    public function audioguidesWithRoom()
+    {
+        return response()->json(DB::select('select * from audioguides inner join rooms r on audioguides.room_id = r.id'));
+    }
+
     public function audioguidesByRoom($id)
     {
-        return response()->json(DB::select('select * from audioguides where room_id = ?', [$id]));
+        return response()->json(DB::select('select * from audioguides inner join rooms r on audioguides.room_id = r.id where room_id = ?', [$id]));
     }
 
     public function audioguidesByBeacon($beacon_code)

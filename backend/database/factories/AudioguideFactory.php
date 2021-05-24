@@ -29,7 +29,7 @@ class AudioguideFactory extends Factory
         return [
             'title' => $this->faker->word,
             'room_id' => Room::inRandomOrder()->first()->id,
-            'path' => asset('audioguides/sample.mp3')
+            'path' => 'audioguides/sample.mp3'
         ];
     }
 }
