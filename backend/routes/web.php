@@ -40,6 +40,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     // articles
     $router->get('/articles', 'ArticlesController@index');
+    $router->get('/articles-for-author/{name}', 'ArticlesController@articlesForAuthor');
+
     $router->get('/room/{room_id}/articles', 'ArticlesController@roomArticles');
 
 });

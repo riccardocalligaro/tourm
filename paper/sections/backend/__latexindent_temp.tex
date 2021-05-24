@@ -35,8 +35,10 @@ Aritcoli scritti da un autore (ricerca per nome)
                     framexleftmargin=40pt,
                     frame=tb,
                     framerule=0pt ]
-SELECT employees.name, employees.surname, articles.id, articles.title, articles.body 
-FROM articles 
-INNER JOIN employees ON articles.employee_id = employees.id 
-WHERE employees.name LIKE {name}
+                    elect
+                    employees.name, employees.surname,
+                    articles.id, articles.title, articles.body
+                    from articles
+                    inner join employees on articles.employee_id = employees.id
+                    where employees.name LIKE ?
 \end{lstlisting}

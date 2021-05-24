@@ -13,6 +13,16 @@ class ArticlesController extends Controller
         return response()->json(DB::select('select * from articles inner join employees e on articles.employee_id = e.id'));
     }
 
+    public function articlesForAuthor($name)
+    {
+        return response()->json(DB::select('select
+        employees.name, employees.surname,
+        articles.id, articles.title, articles.body
+        from articles
+        inner join employees on articles.employee_id = employees.id
+        where employees.name LIKE ?
+        ', [$name]));
+    }
 
     public function roomArticles($room_id)
     {

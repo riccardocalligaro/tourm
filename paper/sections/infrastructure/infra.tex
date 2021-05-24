@@ -53,7 +53,6 @@ Mentre gli svantaggi sono:
     \item se il nodo gateway fallisce, l'intera rete smette di funzionare
 \end{itemize}
 \clearpage
-
 Ai vari dispositivi dei vistatori è necessario aggiungere:
 \begin{itemize}
     \item il \textbf{server}
@@ -72,7 +71,9 @@ Ai vari dispositivi dei vistatori è necessario aggiungere:
 \end{center}
 
 \subsection{Server}
-Come server è stato utilizzato un container docker eseguito sul mio computer personale. \textbf{\href{https://www.docker.com/}{Docker}} è un sistema per l'automazione del deployment di un'applicazione che considera i container come macchine virtuali modulari estremamente leggere, offrendo la flessibilità di creare, distribuire, copiare e spostare i container da un ambiente all'altro in modo sicuro.\cite{docker_guide}. Questo container si occupa di fornire le API utilizzando \textbf{\href{https://www.nginx.com/}{nginx}}, un web server/reverse proxy leggero ad alte prestazioni.
+Come server è stata utilizzata una \textbf{virutal machine} con \textbf{Ubuntu Server 21.04}, una distribuzione ufficiale di Ubuntu dedicata all'ambito server. La principale differenza con la distribuzione standard è l'ambiente desktop: mentre Ubuntu Desktop include un'interfaccia grafica utente, Ubuntu Server no. Inoltre la versione server include anche pacchetti standard che si concentrano principalmente sulla connettività e sicurezza.\cite{ubuntu_server_guide}.\\\\Per fornire le API è stato usato \textbf{\href{https://www.nginx.com/}{nginx}}, un web server/reverse proxy leggero ad alte prestazioni. Questa virtual machine è contenuta in un container \textbf{\href{https://www.docker.com/}{Docker}}, un sistema per l'automazione del deployment che considera i container come macchine virtuali modulari estremamente leggere, offrendo la flessibilità di creare, distribuire, copiare e spostare i container da un ambiente all'altro in modo sicuro.\cite{docker_guide}
+
+
 \subsection{Uso delle API}
 L'applicazione non accede direttamente al database, usa delle API. Creare un livello extra di astrazione non è solo utile per la sicurezza, ma anche per la scalabilità. 
 \subsubsection{Cosa sono le API}
@@ -87,6 +88,4 @@ Un'API, interfaccia di programmazione di un’applicazione, è un insieme di com
 \end{figure}
 \end{center}
 
-
-\subsection{Internet of Things} Tutta questa interconnettività forma quello che viene chiamato \textbf{Internet of Things}, un termine che descrive l'estensione della connessione Internet alle più svariate tipologie di oggetti, in questo caso i beacon bluetooth. I dati rilevati grazie ad appositi sensori possono essere scambiati e comunicati tramite Internet e gli oggetti possono essere monitorati e gestiti da remoto.
 

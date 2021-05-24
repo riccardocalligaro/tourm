@@ -15,7 +15,6 @@
 \usepackage{fancyvrb}
 \usepackage{lipsum}
 
-
 \usepackage[a4paper,bindingoffset=0.2in,%
             left=1in,right=1in,top=1in,bottom=1in,%
             footskip=.25in]{geometry}
@@ -120,8 +119,8 @@
 	\item sviluppare una \textbf{applicazione per smartphone}, disponibile sia su ambiente iOS che Android, destinata all’utente finale per consentirgli di:
 	\begin{itemize}
 	    \item scaricare l'applicazione attraverso un codice QR presente all'interno della villa
-		\item accedere alla parte espositiva dell'applicazione con il codice del biglietto acquistato online o allo sportello di vendita.  
-		\item interagire con le esposizioni automatizzando la riproduzione di spiegazioni audio pre-registrate in base alla posizione
+		\item accedere alla parte espositiva dell'applicazione con il codice del biglietto acquistato online o allo sportello di vendita.
+		\item interagire con le esposizioni automatizzando la riproduzione di spiegazioni audio pre-registrate
 		\item interagire con le esposizioni scannerizzando un codice QR che permette di leggere un articolo e ascoltare l'audioguida associata
 		\item ricevere notifiche automatiche sulla disponibilità di visite guidate o eventi
 	\end{itemize}
@@ -131,14 +130,26 @@
 		\item visualizzare statistiche riguardo le esposizioni e le interazioni fatte dagli utenti 
 		\item chiudere o aprire l’accesso alle stanze
 	\end{itemize}
-    \item sviluppare un'\textbf{infrastruttura di rete} sicura, veloce e affidabile che permette ai visitatori di collegarsi a una rete wireless gratuita senza accesso ad internet, utilizzare l'applicazione senza nessun costo di dati mobili, utilizzare la rete in modo sicuro senza doversi preoccupare di eventuali minacce, creare una rete di \textbf{beacon Bluetooth} che permettono di gestire la riproduzione delle audioguide 
-    e ai gestori di utilizzare dei dispositivi specifici per accedere al pannello di amministrazione
+    \item sviluppare un'\textbf{infrastruttura di rete} sicura, veloce e affidabile che permette ai visitatori di:
+    \begin{itemize}
+        \item collegarsi a una rete wireless gratuita senza accesso ad internet
+        \item utilizzare l'applicazione senza nessun costo di dati mobili
+        \item utilizzare la rete in modo sicuro senza doversi preoccupare di eventuali minacce
+    \end{itemize}
+    e ai gestori di: 
+    \begin{itemize}
+        \item utilizzare dei dispositivi specifici per accedere al pannello di amministrazione
+    \end{itemize}
 \end{itemize}
 
+\clearpage
+
+\subsection{Diagramma dei casi d'uso}
+Gli \textbf{Use Case Diagram} (diagrammi dei casi d'uso) sono dei diagrammi dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso, aiutano a definire e organizzare i requisiti.
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=6cm]{diagrams/usecase_diagrams.png}
+        \includegraphics[width=7cm]{diagrams/usecase_diagrams.png}
         \caption{Diagramma dei casi d'uso}
         \label{fig:usecase}
     \end{figure}
@@ -148,14 +159,14 @@
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=\textwidth]{diagrams/wbs.png}
+        \includegraphics[width=14cm]{diagrams/wbs.png}
         \caption{Work Breakdown Structure}
         \label{fig:wbs}
     \end{figure}
 \end{center}
+\clearpage
 
 \subfile{sections/infrastructure/infra}
-
 \clearpage
 \section{Il backend}
 Il back-end, cioè la parte di ogni sito web o applicazione che gli utenti non vedono è composto da:
@@ -169,22 +180,44 @@ Il back-end, cioè la parte di ogni sito web o applicazione che gli utenti non v
 
 Il database svolge una parte fondamentale di questa applicazione, per descriverlo ci sono vari metodi, io tratterò lo schema entità relazioni e quello logico. Come DBMS è stato usato MySQL.
 
-\subsubsection{Schema ER}
+\subsubsection{Schema E/R}
 Lo schema E/R traduce le problematiche reali in uno  schema concettuale facilmente capibile, senza occuparsi di come sarà costruito il database.
 
+\begin{center}
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[width=14cm]{diagrams/er_scheme.png}
+        \caption{Schema E/R}
+        \label{fig:er}
+    \end{figure}
+\end{center}
+
+\clearpage
 
 \subsubsection{Schema logico}
 L’obiettivo di questa fase è pervenire, a partire dallo schema concettuale, a uno schema logico che
 lo rappresenti in modo fedele, “efficiente” e indipendente dal particolare DBMS adottato. Questo modello logico viene sviluppato anche per arricchire il modello concettuale visto precedentemente definendo esplicitamente le colonne di ogni entità e introducendo entità operative e transazionali.
 
+\begin{center}
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[width=\textwidth]{diagrams/logic_scheme.png}
+        \caption{Schema logico}
+        \label{fig:logic_scheme}
+    \end{figure}
+\end{center}
+
 \subsubsection{API in PHP}
-Le API realizzate con il framework \textbf{Lumen} offrono vari endpoint che conformano allo stile \textbf{REST} (Representational state transfer).
+Le API realizzate con il framework \textbf{Lumen} offrono vari endpoint che conformano allo stile \textbf{REST} (Representational state transfer). Alcune di queste sono:
 \begin{itemize}
-    \item \verb+/api/v1/items+: lista degli elementi
+    \item \verb+/api/v1/rooms+: lista delle stanze
+    \item \verb+/api/v1/audioguides+: lista delle audioguide
+    \item \verb+/api/v1/articles+: lista degli articoli
+    \item \verb+/api/v1/audioguides/{beacon_id}+: audioguide per il beacon indicato
 \end{itemize}
 Questi restituiscono i dati ottenuti dal database con le query in formato \textbf{JSON}, un formato adatto all'interscambio di dati fra applicazioni client/server.
 \subsubsection{Query SQL}
-Per ottenere i dati il server esegue delle interrogazioni al database, di cui prima è stata descritta la struttura. Di seguito vengono riportate alcune query significative.\\\\\subfile{sections/backend/queries}
+Per ottenere i dati il server esegue delle interrogazioni al database, di cui prima è stata descritta la struttura. Di seguito vengono riportate alcune query significative; i parametri vengono indicati con le parentesi graffe, nel codice PHP sono stati ineriti tramite PDO per evitare le SQL injection.\\\\\subfile{sections/backend/queries}
 
 \section{Il client}
 \subsection{App mobile}
@@ -227,7 +260,7 @@ Il pannello di amministrazione permette di:
     \item osservare il conteggio effettivo dei visitatori
     \item chiudere o aprire l’accesso alle stanze
 \end{itemize}
-L'accesso è limitato, può essere visualizzato soltanto dallo staff.
+L'accesso è limitato, può essere visualizzato soltanto dallo staff. Per realizzarlo è stato usato il framework PHP \textbf{Laravel}. L'applicativo accede allo stesso database delle API Rest ma è totalmente separato in termini di codice. 
 
 \subfile{sections/frontend/admin_panel.tex}
 
