@@ -50,7 +50,7 @@ class AudioguidesPage extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => AudioguidePage(
-                                  audioguideWithRoom: audioguide,
+                                  audioguides: [audioguide],
                                 ),
                               ),
                             );

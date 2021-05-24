@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:tourm_app/core/presentation/customization/tm_colors.dart';
+import 'package:tourm_app/core_container.dart';
+import 'package:tourm_app/data/datasource/tm_remote_datasource.dart';
+import 'package:tourm_app/presentation/audioguides/audioguide_page.dart';
 
 class BeaconsScanPage extends StatefulWidget {
   BeaconsScanPage({Key key}) : super(key: key);
@@ -14,10 +17,12 @@ class BeaconsScanPage extends StatefulWidget {
 class _BeaconsScanPageState extends State<BeaconsScanPage> {
   StreamSubscription<MonitoringResult> _monitorStreamSubscription;
   StreamSubscription<RangingResult> _streamRanging;
+
+  final List<Region> _currentRegions = [];
+
   @override
   void initState() {
     initScan();
-
     super.initState();
   }
 
@@ -29,17 +34,20 @@ class _BeaconsScanPageState extends State<BeaconsScanPage> {
     await flutterBeacon.initializeAndCheckScanning;
 
     final regions = <Region>[];
-    regions.add(Region(identifier: 'com.beacon'));
+    regions.add(Region(identifier: '1fed74a3-c1fe-4654-b389-6bb2d2ac5ae3'));
 
     _monitorStreamSubscription = flutterBeacon.monitoring(regions).listen(
       (event) {
-        print("got event ${event.toJson}");
         if (event.monitoringEventType == MonitoringEventType.didEnterRegion) {
-          print('entering ${event.region} ${event.region.identifier}');
+          setState(() {
+            _currentRegions.add(event.region);
+          });
         }
 
         if (event.monitoringEventType == MonitoringEventType.didExitRegion) {
-          print('exiting ${event.region}');
+          setState(() {
+            _currentRegions.remove(event.region);
+          });
         }
       },
     );
@@ -96,6 +104,38 @@ class _BeaconsScanPageState extends State<BeaconsScanPage> {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: Column(
+                  children: List.generate(
+                    _currentRegions.length,
+                    (index) {
+                      final region = _currentRegions[index];
+
+                      return Card(
+                        child: ListTile(
+                          title: Text('Audioguida ${index + 1}'),
+                          onTap: () async {
+                            final TMRemoteDatasource remoteDatasource = sl();
+                            final audioguides = await remoteDatasource
+                                .audioguidesForBeacon(region.identifier);
+
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    AudioguidePage(audioguides: audioguides),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 ),
               )
             ],

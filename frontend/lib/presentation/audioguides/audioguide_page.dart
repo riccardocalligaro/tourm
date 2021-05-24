@@ -1,18 +1,21 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 import 'package:tourm_app/data/model/remote/audioguides_with_room.dart';
 
 class AudioguidePage extends StatefulWidget {
-  final AudioguideWithRoomRemoteModel audioguideWithRoom;
+  final List<AudioguideWithRoomRemoteModel> audioguides;
 
   const AudioguidePage({
     Key key,
-    @required this.audioguideWithRoom,
+    @required this.audioguides,
   }) : super(key: key);
 
   @override
@@ -21,8 +24,29 @@ class AudioguidePage extends StatefulWidget {
 
 class _AudioguidePageState extends State<AudioguidePage> {
   AudioPlayer _player;
+  StreamSubscription<MonitoringResult> _monitorStreamSubscription;
+  StreamSubscription<RangingResult> _streamRanging;
 
   // ProgressiveAudioSource _audioSource;
+
+  void initScan() async {
+    // if you want to manage manual checking about the required permissions
+    await flutterBeacon.initializeScanning;
+
+    // or if you want to include automatic checking permission
+    await flutterBeacon.initializeAndCheckScanning;
+
+    final regions = <Region>[];
+    regions.add(Region(identifier: 'com.beacon'));
+
+    _monitorStreamSubscription = flutterBeacon.monitoring(regions).listen(
+      (event) {
+        if (event.monitoringEventType == MonitoringEventType.didExitRegion) {
+          Navigator.pop(context);
+        }
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -30,6 +54,7 @@ class _AudioguidePageState extends State<AudioguidePage> {
     _player = AudioPlayer();
 
     _init();
+    initScan();
   }
 
   Future<void> _init() async {
@@ -41,7 +66,20 @@ class _AudioguidePageState extends State<AudioguidePage> {
       print('A stream error occurred: $e');
     });
     try {
-      await _player.setUrl(widget.audioguideWithRoom.path);
+      await _player.setAudioSource(
+        ConcatenatingAudioSource(
+          children: widget.audioguides.map((e) {
+            return AudioSource.uri(
+              Uri.parse('${getBaseUrl()}/${e.path}'),
+              tag: AudioMetadata(
+                album: '',
+                title: e.title,
+                artwork: '${getBaseUrl()}/${e.imageUrl}',
+              ),
+            );
+          }).toList(),
+        ),
+      );
     } catch (e) {
       // Catch load errors: 404, invalid url ...
       print("Error loading playlist: $e");
@@ -51,6 +89,9 @@ class _AudioguidePageState extends State<AudioguidePage> {
   @override
   void dispose() {
     _player.dispose();
+    _monitorStreamSubscription.cancel();
+    _streamRanging.cancel();
+
     super.dispose();
   }
 
@@ -62,18 +103,34 @@ class _AudioguidePageState extends State<AudioguidePage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(widget.audioguideWithRoom.imageUrl),
+              StreamBuilder<SequenceState>(
+                stream: _player.sequenceStateStream,
+                builder: (context, snapshot) {
+                  final state = snapshot.data;
+                  if (state == null) return SizedBox();
+                  if (state.sequence.isEmpty ?? true) return SizedBox();
+                  final metadata = state.currentSource.tag as AudioMetadata;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(child: Image.network(metadata.artwork)),
+                      ),
+                      Text(metadata.album,
+                          style: Theme.of(context).textTheme.headline6),
+                      Text(metadata.title),
+                    ],
+                  );
+                },
+              ),
               const SizedBox(
                 height: 32,
-              ),
-              Text(
-                widget.audioguideWithRoom.title,
-                style: Theme.of(context).textTheme.headline6,
               ),
               ControlButtons(_player),
               StreamBuilder<Duration>(
@@ -90,6 +147,8 @@ class _AudioguidePageState extends State<AudioguidePage> {
                       final positionData = snapshot.data ??
                           PositionData(Duration.zero, Duration.zero);
                       var position = positionData.position;
+
+                      if (position == null) return Container();
                       if (position > duration) {
                         position = duration;
                       }

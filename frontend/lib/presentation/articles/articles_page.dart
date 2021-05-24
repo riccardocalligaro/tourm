@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart' hide State;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
 import 'package:tourm_app/core/presentation/animated_qr_dialog.dart';
 import 'package:tourm_app/core/presentation/customization/no_glow.dart';
@@ -416,7 +417,7 @@ class _ArticlesLoadedStateState extends State<ArticlesLoadedState> {
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: TMImage(article.imageUrl),
+                        child: TMImage('${getBaseUrl()}/${article.imageUrl}'),
                       ),
                     ),
                     SizedBox(height: 16),

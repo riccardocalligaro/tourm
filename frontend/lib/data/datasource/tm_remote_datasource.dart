@@ -60,4 +60,19 @@ class TMRemoteDatasource {
 
     return audioguides;
   }
+
+  Future<List<AudioguideWithRoomRemoteModel>> audioguidesForBeacon(
+    String beaconId,
+  ) async {
+    String path = '/audioguides/$beaconId';
+    final response = await dio.get(path);
+    List<AudioguideWithRoomRemoteModel> audioguides =
+        List<AudioguideWithRoomRemoteModel>.from(
+      response.data.map(
+        (i) => AudioguideWithRoomRemoteModel.fromJson(i),
+      ),
+    );
+
+    return audioguides;
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 import 'package:tourm_app/core/infrastructure/error/types/failures.dart';
 import 'package:tourm_app/core/presentation/customization/no_glow.dart';
 import 'package:tourm_app/core/presentation/customization/tm_colors.dart';
@@ -138,7 +139,7 @@ class RoomItem extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: TMImage(
-                          room.imageUrl,
+                          '${getBaseUrl()}/${room.imageUrl}',
                         ),
                       ),
                     ),

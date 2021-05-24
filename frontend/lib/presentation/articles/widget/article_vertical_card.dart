@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 import 'package:tourm_app/core/presentation/customization/tm_image.dart';
 import 'package:tourm_app/data/model/remote/article_remote_model.dart';
 
@@ -61,8 +62,7 @@ class _ArticleVerticalCardState extends State<ArticleVerticalCard> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: TMImage(
-                          widget.article.imageUrl,
-                        ),
+                            '${getBaseUrl()}/${widget.article.imageUrl}'),
                       ),
                     ),
                     SizedBox(

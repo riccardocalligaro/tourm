@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 import 'package:share/share.dart';
+import 'package:tourm_app/core/data/remote/tm_api_config.dart';
 import 'package:tourm_app/core/presentation/customization/tm_image.dart';
 import 'package:tourm_app/data/model/remote/article_remote_model.dart';
 
@@ -53,8 +54,7 @@ class _ArticlePageState extends State<ArticlePage> {
               padding: EdgeInsets.only(top: max(top, 0)),
               width: double.infinity,
               child: TMImage(
-                widget.article.imageUrl,
-                fit: BoxFit.cover,
+                '${getBaseUrl()}/${widget.article.imageUrl}',
               ),
             ),
           ),
