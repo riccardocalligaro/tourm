@@ -114,6 +114,13 @@
 % end table of contents %
 
 \section{Introduzione}
+\begin{center}
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[width=7cm]{images/tourm_logo_transparent.png}
+    \end{figure}
+\end{center}
+
 \textbf{Tourm} si propone di raggiungere i seguenti obiettivi:
 \begin{itemize}
 	\item sviluppare una \textbf{applicazione per smartphone}, disponibile sia su ambiente iOS che Android, destinata all’utente finale per consentirgli di:
@@ -159,7 +166,7 @@ Gli \textbf{Use Case Diagram} (diagrammi dei casi d'uso) sono dei diagrammi dedi
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=14cm]{diagrams/wbs.png}
+        \includegraphics[width=14cm]{diagrams/wbs_v2.png}
         \caption{Work Breakdown Structure}
         \label{fig:wbs}
     \end{figure}
@@ -228,7 +235,6 @@ e inserito il codice presente nel biglietto, l’app viene impostata per la visi
 L’architettura di un sistema software è la “forma” data a quel sistema da coloro che la costruiscono. Per  “forma” si intende la divisione di tale sistema in componenti, nella disposizione di essi e nei modi in cui tali componenti comunicano tra loro. Lo scopo è  quello di facilitare lo sviluppo, la distribuzione, il funzionamento e la manutenzione del sistema software in esso contenuto.\cite{architettura_codice}
 Come architettura è stato deciso di usare la \textbf{clean architecture}, il cui scopo principale è quello di permettere al business di adattarsi ai cambiamenti della tecnologia e delle interfacce cambiando il meno codice possibile. Aiuta a rimuovere quello stretto accoppiamento tra la logica di business e il livello di presentazione.\cite{architettura_introduction} Vi sono tre livelli principali:
 \begin{itemize}
-    \item \textbf{Presentazione:} è il livello responsabile della UI, dove è presente il codice Flutter.
     \item \textbf{Dominio:} è dove si definiscono le entità e i casi d'uso. Non vi sono classi concrete in quel livello, solo interfacce (classi astratte). Tutte le implementazioni nel livello più sotto, il \emph{data}. 
     \item \textbf{Data}: questo livello è responsabile di tutte le implementazioni dei casi d'uso e delle interfacce. Solitamente contiene classi per l'accesso ai dati del database o di una sorgente remota.
 \end{itemize}
@@ -265,9 +271,13 @@ L'accesso è limitato, può essere visualizzato soltanto dallo staff. Per realiz
 \subfile{sections/frontend/admin_panel.tex}
 
 \subfile{sections/security/security.tex}
-\section{Conclusioni}
 
+\section{Considerazioni finali}
+\subsection{Esperienza PCTO}
+I moduli curriculari PCTO svolti durante i tre anni sono stati estremamente utili per la realizzazione di questo progetto; le competenze di \textbf{autoapprendimento} mi hanno aiutato a imparare ed utilizzare nuove tecnologie che non avevo mai usato, come ad esempio il framework \emph{Laravel}. Le competenze di \textbf{analisi di sistemi} mi hanno permesso di analizzare e risolvere con metodologia i vari problemi incontrati durante la realizzazione; infine l'attività svolta in quarta -\emph{Sviluppo App per Web e mobile}- ha arricchito notevolmente le mie competenze per quanto riguarda la creazione di un applicativo complesso e distribuito su più piattaforme.
 
+\subsection{Conclusioni}
+Il mobile computing è ogni giorno più presente nella nostra routine quotidiana. Questo può essere spiegato dalla grande evoluzione che si è verificata in questo settore nel corso dell'ultimo decennio e che ha causato l'emergere di una varietà di nuovi dispositivi mobili e sistemi operativi, sempre più sofisticati e potenti.  Attraverso l'internet of things è possibile collegare a questi dispositivi una miriade di gadget e scambiare informazioni, creando delle integrazioni che semplificano sempre di più la nostra vita quotidiana e migliorano le esperienze d'uso.
 
 \printbibliography
 

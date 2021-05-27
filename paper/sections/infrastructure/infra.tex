@@ -1,7 +1,7 @@
 \section{Infrastruttura di rete}
-Avere un'infrastruttura di rete progettata in maniera efficace è di \textbf{fondamentale importanza}, essa è la spina dorsale di tutte le operazioni quotidiane. Quando si progetta un'infrastruttura non bisogna soltanto considerare la topologia di rete; è necessario infatti tenere conto anche di:
+Avere un'infrastruttura di rete progettata in maniera efficace è di \textbf{fondamentale importanza}, tutte le operazioni quotidiane dipendono da essa. Quando si progetta un'infrastruttura non bisogna soltanto considerare la topologia di rete; è necessario infatti tenere conto anche di:
 \begin{itemize}
-    \item \textbf{dispositivi hardware}: server, datacenter, personal computer, router, switch. È importante fare delle scelte adatte e mirate al caso d'uso.
+    \item \textbf{dispositivi hardware}: server, datacenter, personal computer, router, switch; è importante fare delle scelte adatte e mirate al caso d'uso.
     \item \textbf{applicazioni e software}: applicazioni utilizzate dall'azienda, come web server, sistemi di gestione del contenuto e sistema operativo, ad esempio Linux. 
 \end{itemize}
 
@@ -64,7 +64,7 @@ Ai vari dispositivi dei vistatori è necessario aggiungere:
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=14cm]{diagrams/network_diagram.png}
+        \includegraphics[width=\textwidth]{diagrams/network_diagram_v3.png}
         \caption{Topologia logica}
         \label{fig:topologia_logica}
     \end{figure}
@@ -73,6 +73,7 @@ Ai vari dispositivi dei vistatori è necessario aggiungere:
 \subsection{Server}
 Come server è stata utilizzata una \textbf{virutal machine} con \textbf{Ubuntu Server 21.04}, una distribuzione ufficiale di Ubuntu dedicata all'ambito server. La principale differenza con la distribuzione standard è l'ambiente desktop: mentre Ubuntu Desktop include un'interfaccia grafica utente, Ubuntu Server no. Inoltre la versione server include anche pacchetti standard che si concentrano principalmente sulla connettività e sicurezza.\cite{ubuntu_server_guide}.\\\\Per fornire le API è stato usato \textbf{\href{https://www.nginx.com/}{nginx}}, un web server/reverse proxy leggero ad alte prestazioni. Questa virtual machine è contenuta in un container \textbf{\href{https://www.docker.com/}{Docker}}, un sistema per l'automazione del deployment che considera i container come macchine virtuali modulari estremamente leggere, offrendo la flessibilità di creare, distribuire, copiare e spostare i container da un ambiente all'altro in modo sicuro.\cite{docker_guide}
 
+\clearpage
 
 \subsection{Uso delle API}
 L'applicazione non accede direttamente al database, usa delle API. Creare un livello extra di astrazione non è solo utile per la sicurezza, ma anche per la scalabilità. 

@@ -2,7 +2,10 @@
 \section{Sicurezza}
 L'infrastruttura di rete, i servizi e i dati contenuti nei dispositivi collegati in rete sono risorse personali e aziendali fondamentali. Nessuna soluzione singola può proteggere la rete dalla varietà di minacce esistenti. Per questo motivo, la sicurezza deve essere implementata su \textbf{più livelli}, utilizzando più di una soluzione. Se un componente di sicurezza non riesce a identificare e proteggere la rete, possono farlo altri.\\\\Le misure di sicurezza implementate sono state:
 \begin{itemize}
-    \item Sql Injection
+    \item Uso dei \textbf{PDO} per evitare le \textbf{SQL Injection}. SQL injection è una tecnica di code injection, usata per attaccare applicazioni che gestiscono dati attraverso database relazionali sfruttando il linguaggio SQL
+    \item Utilizzo di \textbf{SSH}: questo protocollo permette di stabilire una sessione remota cifrata tramite interfaccia a riga di comando con il server. È opportuno sostituirlo all'analogo, ma insicuro, telnet.
+    \item Configurazione sicura di \textbf{nginx} e utilizzo di \textbf{https}: https protegge la comunicazione tra l'utente finale e il web server
+    \item Configurazione corretta del \textbf{firewall}: una configurazione impropria può far sì che gli aggressori ottengano un accesso non autorizzato alle reti interne e alle risorse protette.
 \end{itemize}
 % Se si pensa alla struttura di una rete nel modello \textbf{ISO-OSI}, è possibile osservare che le minacce alla sicurezza informatica possono avvenire in qualsiasi livello. Muovendosi verso l'esterno dall'utente, i dati vengono inseriti nella rete attraverso il software che gira sul livello applicazione. Attraverso i livelli sessione, trasporto, rete e collegamento e arrivando all'altra estremità, il livello fisico, i dati risalgono i sette livelli per arrivare alla destinazione prevista. Ogni livello ha i suoi protocolli e altri standard di comunicazione che regolano il suo uso efficiente. Se la sicurezza non è incorporata in modo efficiente ed efficace in ogni livello del modello ISO-OSI, ogni passo del percorso che i dati compiono dall'origine alla destinazione, è vulnerabile e inefficace. È sicuro solo quanto il suo anello più debole. 
 
@@ -15,6 +18,4 @@ L'infrastruttura di rete, i servizi e i dati contenuti nei dispositivi collegati
 %     \end{itemize}
 %     \item \textbf{Presentazione}: questo livello logico o host utilizza una serie di metodi di conversione per standardizzare i dati da e verso vari formati locali, mentre le informazioni vengono trasferite dal livello applicazione alla rete. L'input dagli utenti (che dovrebbe essere stato ripulito prima di passare alle funzioni) dovrebbe essere segregato dalle funzioni di controllo del programma, per evitare input dannosi che potrebbero portare a crash di sistema o exploit.
 % \end{itemize}
-
-\subsection{Docker}
 % parlare di docker 
