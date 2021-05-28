@@ -118,6 +118,7 @@
     \begin{figure}[htp]
         \centering
         \includegraphics[width=7cm]{images/tourm_logo_transparent.png}
+        \vspace{-2.7\baselineskip}
     \end{figure}
 \end{center}
 
@@ -242,7 +243,7 @@ Come architettura è stato deciso di usare la \textbf{clean architecture}, il cu
 \begin{center}
 \begin{figure}[htp]
     \centering
-    \includegraphics[height=7cm]{diagrams/clean_architecture.png}
+    \includegraphics[height=10cm]{diagrams/clean_architecture.png}
     \caption{Lo schema della clean architecture}
     \label{fig:clean_architecture}
 \end{figure}
@@ -258,6 +259,15 @@ Un’applicazione non è mai del tutto statica e richiede in quasi tutti i casi 
 Per gestire tutti questi aspetti in Flutter è possibile utilizzare una soluzione più elegante rispetto ai widget \emph{stateful}, il \textbf{BloC Pattern}. Questo pattern, che è implementato su Flutter con la libreria \emph{flutter\_bloc} permette di gestire il flow dell'applicazione tramite una stream di eventi. 
 
 % TODO: aggiungere diagramma degli stati
+\begin{center}
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[height=11cm]{diagrams/state_diagrams.png}
+        \caption{Il diagramma degli stati}
+        \label{fig:state_diagrans}
+    \end{figure}
+\end{center}
+    
 
 \subsection{Pannello di amministrazione web}
 Il pannello di amministrazione permette di:
@@ -276,7 +286,17 @@ L'accesso è limitato, può essere visualizzato soltanto dallo staff. Per realiz
 \subsection{Esperienza PCTO}
 I moduli curriculari PCTO svolti durante i tre anni sono stati estremamente utili per la realizzazione di questo progetto; le competenze di \textbf{autoapprendimento} mi hanno aiutato a imparare ed utilizzare nuove tecnologie che non avevo mai usato, come ad esempio il framework \emph{Laravel}. Le competenze di \textbf{analisi di sistemi} mi hanno permesso di analizzare e risolvere con metodologia i vari problemi incontrati durante la realizzazione; infine l'attività svolta in quarta -\emph{Sviluppo App per Web e mobile}- ha arricchito notevolmente le mie competenze per quanto riguarda la creazione di un applicativo complesso e distribuito su più piattaforme.
 
+\subsection{Risultati raggiunti e futuri miglioramenti}
+Alla conclusione di questo elaborato, il cui obiettivo era quello di sviluppare una applicazione full-stack per semplificare notevolmente l'utilizzo delle audioguide, sia da parte dell'operatore che dell'utente finale, è possibile affermare che, sulla base dei test effettuati sulle funzionalità implementate, l'applicazione rappresenta un buon punto di partenza per lo sviluppo del prodotto finale. Alcune future funzionalità potrebbero comprendere:
+\begin{itemize}
+    \item aggiunta di un quiz per far interagire gli utenti con l'esposizione
+    \item aggiunta di video o altri contenuti multimediali per comprendere meglio la spiegazione
+\end{itemize} 
+
+
 \subsection{Conclusioni}
+
+
 Il mobile computing è ogni giorno più presente nella nostra routine quotidiana. Questo può essere spiegato dalla grande evoluzione che si è verificata in questo settore nel corso dell'ultimo decennio e che ha causato l'emergere di una varietà di nuovi dispositivi mobili e sistemi operativi, sempre più sofisticati e potenti.  Attraverso l'internet of things è possibile collegare a questi dispositivi una miriade di gadget e scambiare informazioni, creando delle integrazioni che semplificano sempre di più la nostra vita quotidiana e migliorano le esperienze d'uso.
 
 \printbibliography
