@@ -238,7 +238,7 @@ e inserito il codice presente nel biglietto, l’app viene impostata per la visi
 L’architettura di un sistema software è la “forma” data a quel sistema da coloro che la costruiscono. Per  “forma” si intende la divisione di tale sistema in componenti, nella disposizione di essi e nei modi in cui tali componenti comunicano tra loro. Lo scopo è  quello di facilitare lo sviluppo, la distribuzione, il funzionamento e la manutenzione del sistema software in esso contenuto.\cite{architettura_codice}
 Come architettura è stato deciso di usare la \textbf{clean architecture}, il cui scopo principale è quello di permettere al business di adattarsi ai cambiamenti della tecnologia e delle interfacce cambiando il meno codice possibile. Aiuta a rimuovere quello stretto accoppiamento tra la logica di business e il livello di presentazione.\cite{architettura_introduction}\clearpage Vi sono tre livelli principali:
 \begin{itemize}
-    \item \textbf{Dominio:} è dove si definiscono le entità e i casi d'uso. Non vi sono classi concrete in quel livello, solo interfacce (classi astratte). Tutte le implementazioni nel livello più sotto, il \emph{data}. 
+    \item \textbf{Dominio:} è dove si definiscono le entità e i casi d'uso. Non vi sono classi concrete in quel livello, solo interfacce (classi astratte). Tutte le implementazioni sono nel livello più sotto, il \emph{data}. 
     \item \textbf{Data}: questo livello è responsabile di tutte le implementazioni dei casi d'uso e delle interfacce. Solitamente contiene classi per l'accesso ai dati del database o di una sorgente remota.
     \item \textbf{Presentazione}: la UI in Flutter
 \end{itemize}
