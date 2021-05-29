@@ -53,12 +53,12 @@ Mentre gli svantaggi sono:
     \item se il nodo gateway fallisce, l'intera rete smette di funzionare
 \end{itemize}
 \clearpage
-Ai vari dispositivi dei vistatori è necessario aggiungere:
+Ai vari dispositivi dei visitatori è necessario aggiungere:
 \begin{itemize}
     \item il \textbf{server}
     \item il \textbf{router}
     \item uno o più \textbf{switch}
-    \item i vari \textbf{access point} a cui si collegano i dispositivi dei vistatori
+    \item i vari \textbf{access point} a cui si collegano i dispositivi dei visitatori
 \end{itemize}
 
 \begin{center}
@@ -71,7 +71,7 @@ Ai vari dispositivi dei vistatori è necessario aggiungere:
 \end{center}
 
 \subsection{Server}
-Come server è stata utilizzata una \textbf{virutal machine} con \textbf{Ubuntu Server 21.04}, una distribuzione ufficiale di Ubuntu dedicata all'ambito server. La principale differenza con la distribuzione standard è l'ambiente desktop: mentre Ubuntu Desktop include un'interfaccia grafica utente, Ubuntu Server no. Inoltre la versione server include anche pacchetti standard che si concentrano principalmente sulla connettività e sicurezza.\cite{ubuntu_server_guide}.\\\\Per fornire le API è stato usato \textbf{\href{https://www.nginx.com/}{nginx}}, un web server/reverse proxy leggero ad alte prestazioni. Questa virtual machine è contenuta in un container \textbf{\href{https://www.docker.com/}{Docker}}, un sistema per l'automazione del deployment che considera i container come macchine virtuali modulari estremamente leggere, offrendo la flessibilità di creare, distribuire, copiare e spostare i container da un ambiente all'altro in modo sicuro.\cite{docker_guide}
+Come server è stata utilizzata una \textbf{virutal machine} con \textbf{Ubuntu Server 21.04}, una distribuzione ufficiale di Ubuntu dedicata all'ambito server. La principale differenza con la distribuzione standard è l'ambiente desktop: mentre Ubuntu Desktop include un'interfaccia grafica utente, Ubuntu Server no. Inoltre la versione server include anche pacchetti standard che si concentrano principalmente su connettività e sicurezza.\cite{ubuntu_server_guide}.\\\\Per fornire le API è stato usato \textbf{\href{https://www.nginx.com/}{nginx}}, un web server/reverse proxy leggero ad alte prestazioni. Questa virtual machine è contenuta in un container \textbf{\href{https://www.docker.com/}{Docker}}, un sistema per l'automazione del deployment che considera i container come macchine virtuali modulari estremamente leggere, offrendo la flessibilità di creare, distribuire, copiare e spostare i container da un ambiente all'altro in modo sicuro.\cite{docker_guide}
 
 \clearpage
 

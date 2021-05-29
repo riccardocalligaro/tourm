@@ -116,6 +116,7 @@
 % end table of contents %
 
 \section{Introduzione}
+\subsection{Il progetto}
 \begin{center}
     \begin{figure}[htp]
         \centering
@@ -169,7 +170,7 @@ Gli \textbf{Use Case Diagram} (diagrammi dei casi d'uso) sono dei diagrammi dedi
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=14cm]{diagrams/wbs_v2.png}
+        \includegraphics[width=14cm]{diagrams/elaborato_wbs_v2-wbs_V2_rev.png}
         \caption{Work Breakdown Structure}
         \label{fig:wbs}
     \end{figure}
@@ -188,10 +189,10 @@ Il back-end, cioè la parte di ogni sito web o applicazione che gli utenti non v
 
 \subsection{Il database}
 
-Il database svolge una parte fondamentale di questa applicazione, per descriverlo ci sono vari metodi, io tratterò lo schema entità relazioni e quello logico. Come DBMS è stato usato MySQL.
+Il database svolge una parte fondamentale di questa applicazione, per descriverlo ci sono vari metodi, qui si è scelto di trattare lo schema entità relazioni e quello logico. Come DBMS è stato usato MySQL.
 
 \subsubsection{Schema E/R}
-Lo schema E/R traduce le problematiche reali in uno  schema concettuale facilmente capibile, senza occuparsi di come sarà costruito il database.
+Lo schema E/R traduce le problematiche reali in uno  schema concettuale facilmente comprensibile, senza occuparsi di come sarà costruito il database.
 
 \begin{center}
     \begin{figure}[htp]
@@ -218,7 +219,7 @@ lo rappresenti in modo fedele, “efficiente” e indipendente dal particolare D
 \end{center}
 
 \subsubsection{API in PHP}
-Le API realizzate con il framework \textbf{Lumen} offrono vari endpoint che conformano allo stile \textbf{REST} (Representational state transfer). Alcune di queste sono:
+Le API realizzate con il framework \textbf{Lumen} offrono vari endpoint che conformano allo stile \textbf{REST} (Representational state transfer). Alcuni di questi sono:
 \begin{itemize}
     \item \verb+/api/v1/rooms+: lista delle stanze
     \item \verb+/api/v1/audioguides+: lista delle audioguide
@@ -232,15 +233,15 @@ Per ottenere i dati il server esegue delle interrogazioni al database, di cui pr
 \section{Il client}
 \subsection{App mobile}
 L'applicazione viene scaricata dai visitatori attraverso un QRCode. Avviata
-e inserito il codice presente nel biglietto, l’app viene impostata per la visita alla villa. Avviene poi l'interazione con i beacon bluetooth, quando l’app rileva che l'utente sta entrando nel range del trasmettitore avvisa il sistema che il visitatore è nella stanza e manda in esecuzione il commento audio. Quando l’app non percepisce più il beacon avvisa l’app che l’utente è uscito e termina la presentazione.
+e inserito il codice presente nel biglietto, l’app viene impostata per la visita alla villa. Avviene poi l'interazione con i beacon bluetooth; quando l’app rileva che l'utente sta entrando nel range del trasmettitore avvisa il sistema che il visitatore è nella stanza e manda in esecuzione il commento audio. Quando l’app non percepisce più il beacon, avvisa  che l’utente è uscito e termina la presentazione.
 
 \subsubsection{L'architettura del codice}
 L’architettura di un sistema software è la “forma” data a quel sistema da coloro che la costruiscono. Per  “forma” si intende la divisione di tale sistema in componenti, nella disposizione di essi e nei modi in cui tali componenti comunicano tra loro. Lo scopo è  quello di facilitare lo sviluppo, la distribuzione, il funzionamento e la manutenzione del sistema software in esso contenuto.\cite{architettura_codice}
-Come architettura è stato deciso di usare la \textbf{clean architecture}, il cui scopo principale è quello di permettere al business di adattarsi ai cambiamenti della tecnologia e delle interfacce cambiando il meno codice possibile. Aiuta a rimuovere quello stretto accoppiamento tra la logica di business e il livello di presentazione.\cite{architettura_introduction}\clearpage Vi sono tre livelli principali:
+Come architettura è stato deciso di usare la \textbf{clean architecture}, il cui scopo principale è quello di permettere al business di adattarsi ai cambiamenti della tecnologia e delle interfacce cambiando il meno codice possibile. Aiuta a rimuovere quello stretto accoppiamento tra la logica di business e il livello di presentazione.\cite{architettura_introduction}\clearpage Questo tipo di architettura ha tre livelli principali:
 \begin{itemize}
-    \item \textbf{Dominio:} è dove si definiscono le entità e i casi d'uso. Non vi sono classi concrete in quel livello, solo interfacce (classi astratte). Tutte le implementazioni sono nel livello più sotto, il \emph{data}. 
+    \item \textbf{Presentazione}: contiene tutta la UI, si tratta principalmente di codice Flutter. 
+    \item \textbf{Dominio:} è dove si definiscono le entità e i casi d'uso. Non vi sono classi concrete, solo interfacce (classi astratte). Tutte le implementazioni sono nel livello più sotto, il \emph{data}. 
     \item \textbf{Data}: questo livello è responsabile di tutte le implementazioni dei casi d'uso e delle interfacce. Solitamente contiene classi per l'accesso ai dati del database o di una sorgente remota.
-    \item \textbf{Presentazione}: la UI in Flutter
 \end{itemize}
 
 \begin{center}
@@ -294,6 +295,7 @@ Alla conclusione di questo elaborato, il cui obiettivo era quello di sviluppare 
 \begin{itemize}
     \item aggiunta di un quiz per far interagire gli utenti con l'esposizione
     \item aggiunta di video o altri contenuti multimediali per comprendere meglio la spiegazione
+    \item possibilità di maggiore personalizzazione dell'applicazione dal pannello di gestione
 \end{itemize} 
 
 
