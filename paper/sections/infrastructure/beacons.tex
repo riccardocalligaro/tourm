@@ -22,8 +22,8 @@ Riassumendo, la comunicazione sarà composta da due elementi:
 \begin{itemize}
     \item \textbf{Dal presentatore}: il beacon bluetooth, questo spedisce soltanto informazioni. L’informazione standard dei beacon consiste in un \emph{UUID}, e solo un valore major o minor. Per
     % TODO: change UID 
-    esempio: UUID: 9e747915-5996-4b5b-8d3f-335ba7d0745e Major ID: 1 Minor ID: 2. Il trasmettitore non fa niente altro che inviare questa informazione ogni frazione di secondo. Ogni \emph{UUID} sarà associato ad ogni stanza così il client sarà in grado di rilevare in che posizione l'utente si trova.
-    \item \textbf{Dall'osservatore}: l'applicazione mobile sarà responsabile di ricevere i segnali e di far partire o fermare l'audio in base alla posizione.
+    esempio: UUID: 9e747915-5996-4b5b-8d3f-335ba7d0745e Major ID: 1 Minor ID: 2. Il trasmettitore non fa niente altro che inviare questa informazione ogni frazione di secondo. Ogni \emph{UUID} sarà associato ad ogni stanza così il client sarà in grado di rilevare in che posizione l'utente si trova
+    \item \textbf{Dall'osservatore}: l'applicazione mobile sarà responsabile di ricevere i segnali e di far partire o fermare l'audio in base alla posizione
 \end{itemize}
 
 \begin{center}
@@ -38,9 +38,9 @@ Riassumendo, la comunicazione sarà composta da due elementi:
 \subsubsection{Utilizzare un beacon bluetooth}
 Per realizzare un beacon Bluetooth vi sono varie opzioni:
 \begin{enumerate}
-    \item Acquistare un dispositivo già programmato con alimentazione propria ad un costo di circa 5/10 euro.
+    \item Acquistare un dispositivo già programmato con alimentazione propria ad un costo di circa 5/10 euro
     \item Utilizzare un modulo Bluetooth BLE (ad esempio l'HM-10) e alimentarlo via USB
-    \item Traformare il proprio telefono cellulare in un trasmettitore BLE con una semplice applicazione
+    \item Trasformare il proprio telefono cellulare in un trasmettitore BLE con una semplice applicazione
 \end{enumerate}
 
 A seguito della natura dimostrativa di questo progetto è stata scelta la terza opzione.
