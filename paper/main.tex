@@ -14,6 +14,7 @@
 \usepackage{csquotes}
 \usepackage{fancyvrb}
 \usepackage{lipsum}
+\usepackage{tikz}
 
 \usepackage[a4paper,bindingoffset=0.2in,%
             left=1in,right=1in,top=1in,bottom=1in,%
@@ -22,7 +23,27 @@
 
 \addbibresource{references.bib}
 
-
+\newcommand{\ExternalLink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+        \begin{scope}[x=1ex, y=1ex]
+            \clip (-0.1,-0.1) 
+                --++ (-0, 1.2) 
+                --++ (0.6, 0) 
+                --++ (0, -0.6) 
+                --++ (0.6, 0) 
+                --++ (0, -1);
+            \path[draw, 
+                line width = 0.5, 
+                rounded corners=0.5] 
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) 
+            -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) 
+            -- (1, 1) -- (1, 0.6);
+        }
+    }
+    
 % sql query styke %
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codepurple}{HTML}{C42043}
@@ -84,7 +105,7 @@
         \vfill
 
         ITIS C. Zuccante\
-        A. S. 2020/2021
+        A. S. 2020/2021\\\vspace{0.25cm}\LaTeX
 
     \end{center}
 \end{titlepage}
@@ -288,7 +309,7 @@ Lo schema E/R traduce le problematiche reali in uno  schema concettuale facilmen
 \begin{center}
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=14cm]{diagrams/er_scheme.png}
+        \includegraphics[width=14cm]{diagrams/er_scheme_v2.png}
         \caption{Schema E/R}
         \label{fig:er}
     \end{figure}
@@ -371,7 +392,7 @@ Il pannello di amministrazione permette di:
     \item osservare il conteggio effettivo dei visitatori
     \item chiudere o aprire l’accesso alle stanze
 \end{itemize}
-L'accesso è limitato, può essere visualizzato soltanto dallo staff. Per realizzarlo è stato usato il framework PHP \textbf{Laravel}. L'applicativo accede allo stesso database delle API Rest ma è totalmente separato in termini di codice. 
+L'accesso è limitato, può essere visualizzato soltanto dallo staff. Per realizzarlo è stato usato il framework PHP \textbf{Laravel}. L'applicativo accede allo stesso database delle API Rest ma è totalmente separato in termini di codice. L'autenticazione avviene con Laravel Breeze.
 
 \subfile{sections/frontend/admin_panel.tex}
 
@@ -395,7 +416,14 @@ Alla conclusione di questo elaborato, il cui obiettivo era quello di sviluppare 
 
 Il mobile computing è ogni giorno più presente nella nostra routine quotidiana. Questo può essere spiegato dalla grande evoluzione che si è verificata in questo settore nel corso dell'ultimo decennio e che ha causato l'emergere di una varietà di nuovi dispositivi mobili e sistemi operativi, sempre più sofisticati e potenti.  Attraverso l'internet of things è possibile collegare a questi dispositivi una miriade di gadget e scambiare informazioni, creando delle integrazioni che semplificano sempre di più la nostra vita quotidiana e migliorano le esperienze d'uso.
 
+\section*{Collegamenti esterni}
+\begin{itemize}
+    \item Repository con codice sorgente frontend, backend e documento \LaTeX \hspace{0.17cm}\href{https://github.com/riccardocalligaro/tourm}{\ExternalLink}
+\end{itemize}
+
 \printbibliography
+
+
 
 \end{document}
 
