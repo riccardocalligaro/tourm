@@ -18,6 +18,41 @@ class RoomsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final RoomsRepository roomsRepository = sl();
+    final dummyRooms = <RoomRemoteModel>[
+      RoomRemoteModel(
+          id: 1,
+          title: 'Stanza di Bacco',
+          nVisitors: 11,
+          imageUrl:
+              'http://venetocultura.org/immagini%20schede/Veronese%20Sala_dell%60Olimpo.jpg'),
+      RoomRemoteModel(
+        id: 2,
+        title: 'Stanza dell\'Amore coniugale',
+        nVisitors: 5,
+        imageUrl:
+            'http://venetocultura.org/immagini%20schede/Veronese_Maser%203.jpg',
+      ),
+      RoomRemoteModel(
+        id: 2,
+        title: 'Stanza della lucerna',
+        nVisitors: 4,
+        imageUrl:
+            'http://venetocultura.org/immagini%20schede/Veronese_Maser%204.jpg',
+      ),
+      RoomRemoteModel(
+        id: 2,
+        title: 'Stanza del cane',
+        nVisitors: 1,
+        imageUrl:
+            'http://venetocultura.org/immagini%20schede/Veronese_Maser%206.jpg',
+      ),
+      RoomRemoteModel(
+          id: 2,
+          title: ' Sala a crociera',
+          nVisitors: 1,
+          imageUrl:
+              'http://venetocultura.org/immagini%20schede/Veronese_Maser%201.jpg')
+    ];
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -28,7 +63,7 @@ class RoomsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
                 child: Text(
-                  'Rooms',
+                  'Stanze',
                   style: TextStyle(
                     fontSize: 24,
                     color: TMColors.primary,
@@ -53,30 +88,30 @@ class RoomsPage extends StatelessWidget {
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                              child: RoomItem(
-                                room: rooms[0],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                              child: RoomItem(
-                                room: rooms[1],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 160,
-                              child: HighlightedRooms(rooms: rooms),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                            //   child: RoomItem(
+                            //     room: dummyRooms[0],
+                            //   ),
+                            // ),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                            //   child: RoomItem(
+                            //     room: dummyRooms[1],
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 160,
+                            //   child: HighlightedRooms(rooms: rooms),
+                            // ),
                             ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                               shrinkWrap: true,
-                              itemCount: rooms.length,
+                              itemCount: dummyRooms.length,
                               itemBuilder: (context, index) {
                                 return RoomItem(
-                                  room: rooms[index],
+                                  room: dummyRooms[index],
                                 );
                               },
                             )
@@ -138,8 +173,11 @@ class RoomItem extends StatelessWidget {
                       height: 80,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
+                        // child: TMImage(
+                        //   '${getBaseUrl()}/${room.imageUrl}',
+                        // ),
                         child: TMImage(
-                          '${getBaseUrl()}/${room.imageUrl}',
+                          room.imageUrl,
                         ),
                       ),
                     ),

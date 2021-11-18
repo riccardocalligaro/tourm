@@ -56,6 +56,7 @@ class TMApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           locale: languageState.locale,
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: 'Quicksand',
             scaffoldBackgroundColor: Color(0xffffffff),

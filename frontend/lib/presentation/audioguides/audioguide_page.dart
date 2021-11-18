@@ -70,11 +70,13 @@ class _AudioguidePageState extends State<AudioguidePage> {
         ConcatenatingAudioSource(
           children: widget.audioguides.map((e) {
             return AudioSource.uri(
-              Uri.parse('${getBaseUrl()}/${e.path}'),
+              Uri.parse(e.path),
+              // Uri.parse('${getBaseUrl()}/${e.path}'),
               tag: AudioMetadata(
                 album: '',
                 title: e.title,
-                artwork: '${getBaseUrl()}/${e.imageUrl}',
+                artwork: e.imageUrl,
+                // artwork: '${getBaseUrl()}/${e.imageUrl}',
               ),
             );
           }).toList(),
@@ -100,6 +102,7 @@ class _AudioguidePageState extends State<AudioguidePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Augioduida'),
+        brightness: Brightness.dark,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

@@ -53,8 +53,11 @@ class _ArticlePageState extends State<ArticlePage> {
               height: 300,
               padding: EdgeInsets.only(top: max(top, 0)),
               width: double.infinity,
+              // child: TMImage(
+              //   '${getBaseUrl()}/${widget.article.imageUrl}',
+              // ),
               child: TMImage(
-                '${getBaseUrl()}/${widget.article.imageUrl}',
+                widget.article.imageUrl,
               ),
             ),
           ),

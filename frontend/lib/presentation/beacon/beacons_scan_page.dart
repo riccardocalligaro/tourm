@@ -100,7 +100,7 @@ class _BeaconsScanPageState extends State<BeaconsScanPage> {
                 height: 48,
               ),
               Text(
-                'Searching for audioguides...',
+                'Rilevamento posizione...',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -113,22 +113,22 @@ class _BeaconsScanPageState extends State<BeaconsScanPage> {
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                 child: Column(
                   children: List.generate(
-                    _currentRegions.length,
+                    1,
                     (index) {
-                      final region = _currentRegions[index];
+                      // final region = _currentRegions[index];
 
                       return Card(
                         child: ListTile(
                           title: Text('Audioguida ${index + 1}'),
                           onTap: () async {
-                            final TMRemoteDatasource remoteDatasource = sl();
-                            final audioguides = await remoteDatasource
-                                .audioguidesForBeacon(region.identifier);
+                            // final TMRemoteDatasource remoteDatasource = sl();
+                            // final audioguides = await remoteDatasource
+                            //     .audioguidesForBeacon(region.identifier);
 
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    AudioguidePage(audioguides: audioguides),
+                                    AudioguidePage(audioguides: null),
                               ),
                             );
                           },

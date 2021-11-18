@@ -61,8 +61,9 @@ class _ArticleVerticalCardState extends State<ArticleVerticalCard> {
                       height: 80,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: TMImage(
-                            '${getBaseUrl()}/${widget.article.imageUrl}'),
+                        child: TMImage(widget.article.imageUrl),
+                        // child: TMImage(
+                        //     '${getBaseUrl()}/${widget.article.imageUrl}'),
                       ),
                     ),
                     SizedBox(
