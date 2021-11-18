@@ -4,10 +4,8 @@ A prototype of a mobile application, available both on iOS and Android, intended
 
 <div style="text-align:center"><img src="https://i.imgur.com/IrEAPTJ.png"></div>
 
-
-<a href="https://www.youtube.com/watch?v=zTZOG-2ZkQ4"><div style="text-align:center"><img height="200px" style="text-align:center" src="https://i.imgur.com/Q0zSB16.png"></div></a>
-
-
+<a href="https://www.youtube.com/watch?v=zTZOG-2ZkQ4">Watch</a> the presentation video.
+  
 # Used technologies
 
 - 💻 Backend & Admin panel: Laravel + Laravel Breeze for authentication
